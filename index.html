@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoSort – Edukasi & Panduan Pengelolaan Sampah</title>
+  <meta name="description" content="EcoSort adalah blog edukasi lingkungan tentang pemilahan dan pengelolaan sampah rumah tangga: organik, anorganik, dan B3.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%2309a66d' d='M64 6c26 0 47 21 47 47S90 100 64 100 17 79 17 53 38 6 64 6z'/%3E%3Cpath fill='%23fff' d='M58 33h12v53H58z'/%3E%3Cpath fill='%23fff' d='M40 51h53v12H40z'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b1f17;
+      --card:#12251d;
+      --muted:#9ed6be;
+      --accent:#0fd37a;
+      --text:#e6fff5;
+      --text-dim:#bfe8d6;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0f2a22);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter: blur(8px);
+      background:rgba(11,31,23,.6);
+      border-bottom:1px solid rgba(159,230,197,.15);
+    }
+    .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background: radial-gradient(circle at 30% 20%, #20e18e, #0aa967);display:inline-block}
+    .spacer{flex:1}
+    .nav a.link{padding:8px 10px;border-radius:10px}
+    .nav a.link:hover{background:rgba(255,255,255,.06)}
+    .cta{background:var(--accent);color:#052016;border:none;padding:10px 14px;border-radius:12px;font-weight:700}
+    .cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
+    .hero{max-width:1100px;margin:28px auto 0;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;padding:24px 20px}
+    .panel{background:var(--card);border:1px solid rgba(159,230,197,.12);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:.2em 0}
+    .tag{display:inline-block;background:rgba(15,211,122,.12);color:var(--muted);border:1px solid rgba(15,211,122,.25);padding:6px 10px;border-radius:999px;font-size:.9rem;margin-right:6px}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+    .kpi .item{background:rgba(255,255,255,.04);border:1px solid rgba(159,230,197,.12);border-radius:14px;padding:12px;text-align:center}
+    .kpi .n{font-weight:800;font-size:1.3rem;color:var(--accent)}
+    .section{max-width:1100px;margin:10px auto;padding:10px 20px}
+    h2{font-size:clamp(20px,3vw,28px);margin:8px 0 14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid rgba(159,230,197,.12);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+    .badge{font-size:.75rem;opacity:.8}
+    .meta{font-size:.9rem;color:var(--text-dim)}
+    .btn{display:inline-block;border:1px solid rgba(159,230,197,.25);padding:10px 12px;border-radius:12px}
+    .btn:hover{background:rgba(255,255,255,.06)}
+    .how{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .how .step{background:rgba(255,255,255,.04);border:1px solid rgba(159,230,197,.12);border-radius:16px;padding:16px}
+    .how .num{width:28px;height:28px;border-radius:50%;display:inline-grid;place-items:center;background:rgba(15,211,122,.18);border:1px solid rgba(15,211,122,.35);margin-bottom:8px;color:var(--accent);font-weight:800}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(159,230,197,.25);background:#0c2019;color:var(--text)}
+    footer{max-width:1100px;margin:40px auto 20px;color:var(--text-dim);padding:0 20px}
+    .hero-art{aspect-ratio:4/3;border-radius:18px;background:
+      radial-gradient(120% 120% at 0% 0%,rgba(32,225,142,.15),rgba(32,225,142,0) 60%),
+      radial-gradient(120% 120% at 100% 0%,rgba(0,180,120,.15),rgba(0,180,120,0) 60%),
+      linear-gradient(135deg,#0a3a2d,#0b241d 60%);
+      border:1px solid rgba(159,230,197,.15);
+      display:grid;place-items:center;
+    }
+    .hero-art .leaf{
+      width:70%;height:70%;
+      background: conic-gradient(from 210deg at 50% 60%, #20e18e 0 40%, #0aa967 0 100%);
+      clip-path: path('M50 5 C20 25, 5 55, 30 85 C45 100,55 100,70 85 C95 55,80 25,50 5 Z');
+      filter: drop-shadow(0 10px 25px rgba(32,225,142,.25));
+      opacity:.85;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .how{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .kpi{grid-template-columns:1fr 1fr 1fr}
+    }
+  </style>
+  <script>
+    // tiny client-side enhancement for "copy tips"
+    function copyText(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      navigator.clipboard.writeText(el.innerText).then(()=>{
+        const btn = document.querySelector('[data-copy='+id+']');
+        if(btn){ btn.innerText='Disalin ✓'; setTimeout(()=>btn.innerText='Salin',1500); }
+      });
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "EcoSort",
+    "description": "Blog edukasi pemilahan dan pengelolaan sampah rumah tangga.",
+    "url": "https://example.com/ecosort",
+    "inLanguage": "id-ID",
+    "publisher": { "@type": "Organization", "name": "EcoSort" }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <span class="brand"><span class="logo"></span> EcoSort</span>
+      <a class="link" href="#artikel">Artikel</a>
+      <a class="link" href="#panduan">Panduan</a>
+      <a class="link" href="#tentang">Tentang</a>
+      <a class="link" href="#kontak">Kontak</a>
+      <span class="spacer"></span>
+      <a class="cta" href="#kampanye">Ikut Kampanye</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="panel">
+      <span class="tag">Kampanye Lingkungan</span>
+      <h1>Mulai Pilah Sampah dari Rumah. <br/>Kecil sekarang, besar dampaknya.</h1>
+      <p class="meta">
+        EcoSort adalah blog open‑source yang membantu kamu memilah <strong>organik</strong>, <strong>anorganik</strong>, dan <strong>B3</strong>, serta mengelola sampah agar tidak berakhir di TPA.
+      </p>
+      <div class="kpi">
+        <div class="item"><div class="n">60%</div><div>Volume TPA bisa berkurang jika organik dikomposkan.</div></div>
+        <div class="item"><div class="n">3</div><div>Warna tong: hijau, kuning, merah.</div></div>
+        <div class="item"><div class="n">5 mnt</div><div>Waktu harian untuk pilah sampah di rumah.</div></div>
+      </div>
+    </div>
+    <div class="hero-art panel">
+      <div class="leaf" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="artikel" class="section">
+    <h2>Artikel Utama</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="badge">♻️ Pemilahan Sampah</span>
+        <h3>Kenali Jenis Sampah & Cara Memilahnya</h3>
+        <p>Sampah dibagi menjadi <strong>organik</strong> (sisa makanan/daun), <strong>anorganik</strong> (plastik, kaleng, botol), dan <strong>B3</strong> (baterai, lampu neon, obat). Gunakan tiga tempat sampah dengan kode warna: hijau, kuning, merah.</p>
+        <p class="meta">Tips cepat: bilas kemasan sebelum masuk tong kuning agar tidak berbau.</p>
+        <a class="btn" href="#a1">Baca Selengkapnya</a>
+      </article>
+      <article class="card">
+        <span class="badge">🌱 Kompos</span>
+        <h3>Cara Membuat Kompos dari Sampah Dapur</h3>
+        <p>Siapkan wadah tertutup, masukkan sisa sayur/buah, campur dengan tanah/daun kering, aduk tiap 3 hari. Dalam 2–4 minggu kompos siap untuk tanaman.</p>
+        <p class="meta">Manfaat: kurangi emisi metana & hemat biaya pupuk.</p>
+        <a class="btn" href="#a2">Baca Selengkapnya</a>
+      </article>
+      <article class="card">
+        <span class="badge">🧃 Daur Ulang</span>
+        <h3>Setor ke Bank Sampah & Dapatkan Manfaat</h3>
+        <p>Kelompokkan plastik, kertas, dan logam. Setor ke bank sampah terdekat untuk ditukar uang/poin. Bangun kebiasaan: jadwalkan setor 2 minggu sekali.</p>
+        <p class="meta">Bonus: kurangi clutter di rumah dan dukung ekonomi sirkular.</p>
+        <a class="btn" href="#a3">Baca Selengkapnya</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="panduan" class="section">
+    <h2>Panduan Singkat: 4 Langkah Pilah & Kelola</h2>
+    <div class="how">
+      <div class="step">
+        <div class="num">1</div>
+        <strong>Pilah dari sumber</strong>
+        <p>Sediakan 3 tong dengan label warna. Tempatkan di dapur agar mudah diakses.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <strong>Bersihkan kemasan</strong>
+        <p>Bilas plastik/kaleng agar tidak menarik hama & bau.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <strong>Komposkan organik</strong>
+        <p>Gunakan wadah tertutup, tambahkan tanah/serbuk gergaji, aduk berkala.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <strong>Setor anorganik</strong>
+        <p>Kumpulkan plastik, kertas, logam. Setor ke bank sampah / pengepul resmi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kampanye">
+    <h2>Toolkit Kampanye</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Template Caption Media Sosial</h3>
+        <p id="cap1">Hari ini aku pilah sampahku: hijau untuk organik, kuning untuk anorganik, merah untuk B3. Yuk mulai dari rumah, kecil sekarang besar dampaknya! #EcoSort #PilahSampah</p>
+        <button class="btn" data-copy="cap1" onclick="copyText('cap1')">Salin</button>
+      </div>
+      <div class="card">
+        <h3>Checklist Harian</h3>
+        <ul>
+          <li>🔲 Pisahkan organik & anorganik setelah masak</li>
+          <li>🔲 Bilas botol/kaleng sebelum buang</li>
+          <li>🔲 Cek wadah kompos (aduk tiap 3 hari)</li>
+          <li>🔲 Jadwal setor bank sampah</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Poster Print</h3>
+        <p>Letakkan poster kode warna di dekat tong sampah. (Tambahkan logo sekolah/kampusmu untuk personalisasi.)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="a1">
+    <h2>Artikel: Jenis Sampah & Cara Memilahnya</h2>
+    <p><strong>Organik:</strong> sisa makanan, sayur, kulit buah, daun. → <em>Komposkan</em> agar kembali ke tanah.</p>
+    <p><strong>Anorganik:</strong> plastik (PP, PET), kertas, karton, kaleng, kaca. → <em>Sortir & setorkan</em> ke bank sampah/daur ulang.</p>
+    <p><strong>B3:</strong> baterai, lampu neon, obat kadaluarsa, oli. → <em>Tempatkan di wadah khusus</em> dan bawa ke titik kumpul B3 resmi.</p>
+    <p><strong>Kode Warna:</strong> hijau (organik), kuning (anorganik), merah (B3). Tempelkan label di setiap tong untuk memudahkan seluruh anggota keluarga.</p>
+  </section>
+
+  <section class="section" id="a2">
+    <h2>Artikel: Kompos dari Sampah Dapur</h2>
+    <div class="about">
+      <div class="panel">
+        <h3>Langkah Praktis</h3>
+        <ol>
+          <li>Gunakan wadah tertutup (ember 20 L atau <em>composter</em> sederhana).</li>
+          <li>Masukkan sisa sayur/buah, tambah bahan coklat (daun kering/karton non‑printing).</li>
+          <li>Jaga kelembapan: tidak terlalu basah, tidak terlalu kering.</li>
+          <li>Aduk tiap 3 hari, tutup kembali. 2–4 minggu kompos siap.</li>
+        </ol>
+        <p class="meta">Catatan: hindari daging/susu untuk pemula karena berbau & mengundang hama.</p>
+      </div>
+      <div class="panel">
+        <h3>Manfaat Utama</h3>
+        <ul>
+          <li>Kurangi emisi metana dari TPA</li>
+          <li>Memperkaya tanah & menekan biaya pupuk</li>
+          <li>Mengurangi bau pada tong sampah organik</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="a3">
+    <h2>Artikel: Bank Sampah & Ekonomi Sirkular</h2>
+    <p>Bank sampah menerima anorganik terpilah (plastik/kertas/logam) untuk didaur ulang. Banyak bank sampah memberi insentif berupa uang, poin, atau tabungan.</p>
+    <div class="panel">
+      <h3>Cara Mulai</h3>
+      <ol>
+        <li>Kelompokkan plastik (PET, HDPE) & kertas (kardus, HVS).</li>
+        <li>Bersihkan & keringkan untuk kualitas lebih baik.</li>
+        <li>Timbang & setor ke bank sampah terdekat setiap 2 minggu.</li>
+      </ol>
+      <p class="meta">Tip: gabung grup WA/Telegram komunitas hijau di domisili kamu untuk info jadwal penjemputan.</p>
+    </div>
+  </section>
+
+  <section id="tentang" class="section">
+    <h2>Tentang EcoSort</h2>
+    <div class="about">
+      <div class="panel">
+        <p>Blog ini dibuat sebagai proyek kampanye lingkungan berbasis teknologi open‑source. Konten berfokus pada praktik sederhana yang bisa dilakukan siapa saja, terutama pelajar/mahasiswa dan keluarga muda.</p>
+        <p>Konten bebas dipakai ulang dengan atribusi. Kembangkan bersama kelas/komunitasmu.</p>
+      </div>
+      <div class="panel">
+        <h3>Teknologi</h3>
+        <ul>
+          <li>CMS: WordPress/Blogger (open‑source/gratis)</li>
+          <li>Desain responsif; siap diakses via ponsel</li>
+          <li>Struktur SEO dasar (JSON‑LD Blog schema)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="section contact">
+    <h2>Kontak & Saran</h2>
+    <p class="meta">Kirimkan ide, foto kegiatan pilah sampah di rumah/kampus, atau ajakan kolaborasi.</p>
+    <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesanmu telah tercatat secara lokal. Untuk produksi, hubungkan ke layanan email/form backend.');">
+      <input type="text" placeholder="Nama" required>
+      <input type="email" placeholder="Email" required>
+      <textarea rows="5" placeholder="Pesan / Saran"></textarea>
+      <button class="cta" type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 EcoSort · Konten berlisensi CC BY 4.0 · Dibangun dengan teknologi open‑source.</p>
+  </footer>
+</body>
+</html>
